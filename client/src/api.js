@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+const BASE = import.meta.env.VITE_API_BASE || 'https://student-management-portal-eight-hazel.vercel.app';
 
 // Helper to get Authorization header
 function getAuthHeader() {
