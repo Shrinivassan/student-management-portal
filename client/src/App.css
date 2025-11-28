@@ -42,9 +42,7 @@
 /* Login Page Background */
 .login-bg {
   min-height: 100vh;
-  background: linear-gradient(-45deg, #0054d4, #2563eb, #7c3aed, #3b82f6);
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
+  background: #ffffff;
   position: relative;
   overflow: hidden;
 }
