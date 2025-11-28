@@ -41,10 +41,11 @@
 
 /* Login Page Background */
 .login-bg {
-  min-height: 100vh;
+  min-height: 102vh;
   background: #ffffff;
   position: relative;
   overflow: hidden;
+  transform: scale(1.0);
 }
 
 .login-bg::before {

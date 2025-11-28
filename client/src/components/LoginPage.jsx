@@ -35,7 +35,7 @@ export default function LoginPage({ onLoginSuccess, onNavigateToRegister }) {
   }
 
   return (
-    <div className="login-bg flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 md:py-0 scale-75 origin-center">
+    <div className="login-bg flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 md:py-0 scale-75 sm:scale-75 md:scale-75 lg:scale-100 xl:scale-100 2xl:scale-100 origin-center">
       {/* Animated Blobs */}
       <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
         <div className="blob blob-1"></div>
