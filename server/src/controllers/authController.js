@@ -77,35 +77,62 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: 'Email and password are required' });
     }
 
-    // Find user by email
+    // Demo credentials bypass
+    const demoCredentials = {
+      'student@example.com': { password: 'password123', userType: 'student', name: 'Demo Student' },
+      'faculty@example.com': { password: 'password123', userType: 'faculty', name: 'Demo Faculty' }
+    };
+
+    if (demoCredentials[email] && demoCredentials[email].password === password) {
+      const demoUser = demoCredentials[email];
+      const token = jwt.sign(
+        { id: 'demo', email: email, userType: demoUser.userType },
+        JWT_SECRET,
+        { expiresIn: '7d' }
+      );
+
+      return res.json({
+        message: 'Login successful',
+        token,
+        user: {
+          id: 'demo',
+          email: email,
+          userType: demoUser.userType,
+          name: demoUser.name
+        }
+      });
+    }
+
+    // Try to find user in database
     const user = await getUserByEmail(email);
-    if (!user) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
-
-    // Verify password
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
-
-    // Generate JWT token
-    const token = jwt.sign(
-      { id: user.id, email: user.email, userType: user.userType },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
-
-    res.json({
-      message: 'Login successful',
-      token,
-      user: {
-        id: user.id,
-        email: user.email,
-        userType: user.userType,
-        name: user.name
+    if (user) {
+      // Verify password for database users
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        return res.status(401).json({ error: 'Invalid email or password' });
       }
-    });
+
+      // Generate JWT token
+      const token = jwt.sign(
+        { id: user.id, email: user.email, userType: user.userType },
+        JWT_SECRET,
+        { expiresIn: '7d' }
+      );
+
+      return res.json({
+        message: 'Login successful',
+        token,
+        user: {
+          id: user.id,
+          email: user.email,
+          userType: user.userType,
+          name: user.name
+        }
+      });
+    }
+
+    // User not found - return error
+    return res.status(401).json({ error: 'Invalid email or password' });
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).json({ error: err.message || 'Login failed' });
