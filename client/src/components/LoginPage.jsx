@@ -35,16 +35,16 @@ export default function LoginPage({ onLoginSuccess, onNavigateToRegister }) {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 md:py-0 scale-75 origin-center">
-      {/* Background Orbs - Hidden on mobile */}
+    <div className="login-bg flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 md:py-0 scale-75 origin-center">
+      {/* Animated Blobs */}
       <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        <div className="blob blob-1"></div>
+        <div className="blob blob-2"></div>
+        <div className="blob blob-3"></div>
       </div>
 
       <div className="relative z-10 w-full max-w-sm md:max-w-md">
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden backdrop-blur-xl">
+        <div className="glass-card rounded-2xl overflow-hidden shadow-2xl">
           {/* Header */}
           <div className="bg-linear-to-r from-blue-600 to-blue-800 px-4 sm:px-6 py-6 sm:py-8 text-center">
             <div className="inline-flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 bg-white/20 rounded-xl mb-3 sm:mb-4">
