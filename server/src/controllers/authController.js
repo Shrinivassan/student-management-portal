@@ -13,9 +13,9 @@ export const register = async (req, res) => {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
-    // Validate email ends with @kongu.edu
-    if (!email.toLowerCase().endsWith('@kongu.edu')) {
-      return res.status(400).json({ error: 'Please use your official Kongu University email (@kongu.edu)' });
+    // Validate email format (basic check)
+    if (!email.includes('@')) {
+      return res.status(400).json({ error: 'Please provide a valid email address' });
     }
 
     // Validate password match
@@ -75,11 +75,6 @@ export const login = async (req, res) => {
     // Validate inputs
     if (!email || !password) {
       return res.status(400).json({ error: 'Email and password are required' });
-    }
-
-    // Validate email format
-    if (!email.toLowerCase().endsWith('@kongu.edu')) {
-      return res.status(400).json({ error: 'Please use your official Kongu University email (@kongu.edu)' });
     }
 
     // Find user by email

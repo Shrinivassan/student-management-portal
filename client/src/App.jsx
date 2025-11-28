@@ -24,7 +24,7 @@ function App() {
       const data = await api.getStudents()
       setStudents(data)
     } catch (err) {
-      console.error(err)
+      console.error(err)-
       alert('Failed to load students')
     } finally {
       setLoading(false)

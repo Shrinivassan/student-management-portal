@@ -35,7 +35,7 @@ export default function LoginPage({ onLoginSuccess, onNavigateToRegister }) {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 md:py-0">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 md:py-0 scale-75 origin-center">
       {/* Background Orbs - Hidden on mobile */}
       <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -63,8 +63,8 @@ export default function LoginPage({ onLoginSuccess, onNavigateToRegister }) {
                 <button
                   onClick={() => setUserType('student')}
                   className={`py-2 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 ${userType === 'student'
-                      ? 'bg-blue-100 text-blue-700 border-2 border-blue-500 shadow-md'
-                      : 'bg-gray-100 text-gray-600 border-2 border-gray-200 hover:border-blue-300'
+                    ? 'bg-blue-100 text-blue-700 border-2 border-blue-500 shadow-md'
+                    : 'bg-gray-100 text-gray-600 border-2 border-gray-200 hover:border-blue-300'
                     }`}
                 >
                   <GraduationCap className="w-3 sm:w-4 h-3 sm:h-4" />
@@ -75,8 +75,8 @@ export default function LoginPage({ onLoginSuccess, onNavigateToRegister }) {
                 <button
                   onClick={() => setUserType('faculty')}
                   className={`py-2 sm:py-3 px-3 sm:px-4 rounded-lg sm:rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 ${userType === 'faculty'
-                      ? 'bg-purple-100 text-purple-700 border-2 border-purple-500 shadow-md'
-                      : 'bg-gray-100 text-gray-600 border-2 border-gray-200 hover:border-purple-300'
+                    ? 'bg-purple-100 text-purple-700 border-2 border-purple-500 shadow-md'
+                    : 'bg-gray-100 text-gray-600 border-2 border-gray-200 hover:border-purple-300'
                     }`}
                 >
                   <Users className="w-3 sm:w-4 h-3 sm:h-4" />
