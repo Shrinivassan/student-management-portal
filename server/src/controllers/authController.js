@@ -1,8 +1,10 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { createUser, getUserByEmail } from '../models/userModel.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET_KEY;
 
 export const register = async (req, res) => {
   try {
@@ -12,6 +14,7 @@ export const register = async (req, res) => {
     if (!email || !password || !confirmPassword || !userType || !name) {
       return res.status(400).json({ error: 'All fields are required' });
     }
+
 
     // Validate email format (basic check)
     if (!email.includes('@')) {
